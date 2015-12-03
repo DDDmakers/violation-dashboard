@@ -20,8 +20,7 @@ ui <- fluidPage(
   headerPanel('Violation Dashboard Test'),
   sidebarPanel(
     selectInput('xcol', 'X Variable', names(all.properties)),
-    selectInput('ycol', 'Y Variable', names(all.properties),
-      selected = names(all.properties)[[2]]),
+    selectInput('ycol', 'Y Variable', names(all.properties))
   ),
   mainPanel(
     plotOutput('plot1')
