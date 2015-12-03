@@ -1,6 +1,7 @@
 ##DDM Dashboard
 
 library(shiny)
+library(openxlsx)
 
 all.violations <- read.xlsx("violation-dashboard/Violation Report ALL.xlsx")
 nrow(all.violations)
