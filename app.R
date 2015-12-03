@@ -3,7 +3,7 @@
 library(shiny)
 library(openxlsx)
 
-url <- "https://raw.githubusercontent.com/DDDmakers/violation-dashboard/master/"Violation%20Report%20ALL.xlsx"
+url <- "https://raw.githubusercontent.com/DDDmakers/violation-dashboard/master/"Violation Report ALL.xlsx"
 dat.temp <- getURL( url, ssl.verifypeer = FALSE )
 all.violations <- read.xlsx( textConnection( dat.temp ))  
 nrow(all.violations)
