@@ -4,8 +4,7 @@ library(shiny)
 library(openxlsx)
 
 url <- "https://github.com/DDDmakers/violation-dashboard/blob/master/Violation%20Report%20ALL.xlsx"
-dat.temp <- getURL( url, ssl.verifypeer = FALSE )
-all.violations <- read.xlsx( textConnection( dat.temp ))  
+all.violations <- read.xlsx(url)  
 nrow(all.violations)
 
 ##this generates an error that the Excel does not exists
