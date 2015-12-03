@@ -41,5 +41,7 @@ server <- function(input, output) {
   })
 
 }
+##this plot code does not allow for me to remove NAs, the drop downs dont work properly,
+##and the xlim/ylim is limiting to the types and size of columsn that might be chosen.
 
 shinyApp(ui = ui, server = server)
