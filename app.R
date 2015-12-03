@@ -37,8 +37,7 @@ server <- function(input, output) {
     par(mar = c(5.1, 4.1, 0, 1))
     plot(selectedData(),
          col = "lightblue",
-         pch = 19, xlim=c(0,2050), ylim = c(0,2050),
-         xlab=input$xcol, ylab=input$ycol)
+         pch = 19, xlim=c(0,2050), ylim = c(0,2050))
   })
 
 }
