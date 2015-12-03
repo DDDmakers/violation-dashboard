@@ -8,7 +8,7 @@ url2 <- "https://github.com/DDDmakers/violation-dashboard/blob/master/all%20data
 dat.temp <- getURL( url, ssl.verifypeer = FALSE )
 dat.temp2 <- getURL( url2, ssl.verifypeer = FALSE )
 all.violations <- read.csv( textConnection( dat.temp ), stringsAsFactors=FALSE )  
-all.properties <- read.csv( textConnection( dat.temp ), stringsAsFactors=FALSE )  
+all.properties <- read.csv( textConnection( dat.temp2 ), stringsAsFactors=FALSE )  
 
 rm( url )
 rm( url2 )
