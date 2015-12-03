@@ -1,6 +1,7 @@
 ##DDM Dashboard
 
 library(shiny)
+library(RCurl)
 
 url <- "https://github.com/DDDmakers/violation-dashboard/blob/master/Violation%20Report%20ALL.csv"
 dat.temp <- getURL( url, ssl.verifypeer = FALSE )
