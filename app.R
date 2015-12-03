@@ -30,14 +30,15 @@ ui <- fluidPage(
 server <- function(input, output) {
 
   selectedData <- reactive({
-    all.properties[, c(input$xcol, input$ycol)]
+    all.properties[, c(input$xcol, input$ycol, na.rm=T)]
   })
 
   output$plot1 <- renderPlot({
     par(mar = c(5.1, 4.1, 0, 1))
     plot(selectedData(),
          col = "lightblue",
-         pch = 19, xlim=c(0,2050), ylim = c(0,2050))
+         pch = 19, xlim=c(0,2050), ylim = c(0,2050),
+         xlab=input$xcol, ylab=input$ycol)
   })
 
 }
