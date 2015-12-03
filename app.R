@@ -30,7 +30,7 @@ ui <- fluidPage(
 server <- function(input, output) {
 
   selectedData <- reactive({
-    all.properties[, c(input$xcol, input$ycol, na.rm=T)]
+    all.properties[, c(input$xcol, input$ycol)]
   })
 
   output$plot1 <- renderPlot({
