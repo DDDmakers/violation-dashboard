@@ -12,3 +12,4 @@ library( shiny )
 runGitHub( repo="violation-dashboard", username="DDDmakers")
 
 ```
+The Violatoin Dashboard can also be accessed via the following link: *INSERT LINK WHEN READY*
