@@ -28,6 +28,7 @@ open.violations <- read.csv("Data/AverageDays.csv")
 syracuse <- get_map(location="Syracuse NY", zoom = 13, color="bw")
 syr.map <- ggmap(syracuse, extent = "device")
 vacancy <- as.factor(open.violations$VacantBuilding)
+landtype <- as.factor(open.violations$LandUse)
 
 #Begin Server
 shinyServer(function(input, output, sessions) {
@@ -173,21 +174,20 @@ shinyServer(function(input, output, sessions) {
   #Map for All Open Violations
   output$map1 <- renderPlot({
     
-    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat), size=3, col="chocolate1", alpha=.4)
+    syr.map + geom_point(data=open.violations, aes(x=open.violation$lon, y=open.violations$lat), size=3, col="chocolate1", alpha=.4)
     
     })
   #Map for Open Violations by Vacancy 
   output$map2 <- renderPlot({
       
-    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=vacancy), size=3)
+    syr.map + geom_point(data=open.violations, aes(x=open.violations$lon, y=open.violations$lat, col=vacancy), size=3)
     
     })
    #Map for Open Violations by Land Use Type
    output$map3 <- renderPlot({
       
-     syr.map + geom_point(data=open.violations, 
-                          aes(x=lon, y=lat, col=factor(open.violations$LandUse)),
-                          size=3)
+     syr.map + geom_point(data=open.violations, aes(x=open.violations$lon, y=open.violations$lat, col=landtype), size=3)
+    
     
   })
   
