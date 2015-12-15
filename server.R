@@ -14,6 +14,9 @@ averageDays2 <- read.csv("Data/AverageDays2.csv", stringsAsFactors = F)
 #Functions before Server Begins: Tab 2 Violation Frequency
 dat <- read.csv( "Data/Violation-Report.csv", stringsAsFactors=F )
 
+#Functions before Server Begins: Tab 3 and 4 maps
+open.violations <- read.csv("Data/openviolations.csv")
+
 source(helpers.R)
 
 #Begin Server
