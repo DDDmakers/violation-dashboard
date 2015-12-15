@@ -16,7 +16,6 @@ total.complaints[ is.na(total.complaints) ] <- 0
 dat$month.year <- month.year
 
 #Functions before Server Begins: Tab 2 Violation Locations
-open.violations <- read.csv("Data/openviolations.csv")
 syracuse <- get_map(location="Syracuse NY", zoom = 13, color="bw")
 syr.map <- ggmap(syracuse, extent = "device")
 vacancy <- as.factor(open.violations$VacantBuilding)
@@ -26,8 +25,6 @@ landtype <- as.factor(open.violations$LandUse)
 
 #Heatmap Functions
 nov.parcel <- read.xlsx("Data/all data by property.csv")
-
-##Code for heat maps
 newyork <- readShapePoly( fn="Data/tl_2015_36_tract", proj4string=CRS("+proj=longlat"))
 onondaga <- subset(newyork, subset=(COUNTYFP== "067" ))
 tract.nums2<- c("000100","001000","001400","001500","001600","001701","001702","001800","001900",
