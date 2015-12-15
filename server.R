@@ -14,12 +14,12 @@ vacancy <- as.factor(open.violations$VacantBuilding)
 landtype <- as.factor(open.violations$LandUse)
 
 #functions for closeout
-closedViolations <- read.csv("ComplaintsDays.csv", stringsAsFactors = FALSE )
-averageDays <- read.csv("AverageDays.csv", stringsAsFactors = F)
-averageDays2 <- read.csv("AverageDays2.csv", stringsAsFactors = F)
+closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = FALSE )
+averageDays <- read.csv("Data/AverageDays.csv", stringsAsFactors = F)
+averageDays2 <- read.csv("Data/AverageDays2.csv", stringsAsFactors = F)
 
 #functions before Server begins for Frequency
-dat <- read.csv( "Violation-Report.csv", stringsAsFactors=F )
+dat <- read.csv( "Data/Violation-Report.csv", stringsAsFactors=F )
 violation.date <- as.Date( dat$Violation.Date, "%m/%d/%Y" )
 gt.2012 <- violation.date > "2011-12-31"
 dat <- dat[ gt.2012 , ]
