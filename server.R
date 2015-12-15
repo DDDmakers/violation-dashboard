@@ -3,32 +3,6 @@
 #load libraries
 source(helpers.R)
 
-#Functions before Server Begins: Tab 1 Complaint Closeout
-closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = F )
-averageDays <- read.csv("Data/AverageDays.csv", stringsAsFactors = F)
-averageDays2 <- read.csv("Data/AverageDays2.csv", stringsAsFactors = F)
-
-#Functions before Server Begins: Tab 2 Violation Frequency
-dat <- read.csv( "Data/Violation-Report.csv", stringsAsFactors=F )
-violation.date <- as.Date( dat$Violation.Date, "%m/%d/%Y" )
-gt.2012 <- violation.date > "2011-12-31"
-dat <- dat[ gt.2012 , ]
-violation.date <- as.Date( dat$Violation.Date, "%m/%d/%Y" )
-closed.date <- as.Date( dat$Complaint.Close.Date, "%m/%d/%Y" )
-duration <- closed.date - violation.date 
-month.year <- cut( violation.date, breaks="month" )
-month.year.name <- format( violation.date, "%b-%Y" )
-total.complaints <- tapply( dat$Complaint.Type, month.year, length )
-total.complaints[ is.na(total.complaints) ] <- 0
-dat$month.year <- month.year
-
-#Functions before Server Begins: Tab 2 Violation Locations
-open.violations <- read.csv("Data/openviolations.csv")
-syracuse <- get_map(location="Syracuse NY", zoom = 13, color="bw")
-syr.map <- ggmap(syracuse, extent = "device")
-vacancy <- as.factor(open.violations$VacantBuilding)
-landtype <- as.factor(open.violations$LandUse)
-
 #Begin Server
 shinyServer(function(input, output, sessions) {
 
