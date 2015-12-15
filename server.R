@@ -7,7 +7,7 @@ library(shiny)
 library(ggmap)
 
 #functions for maps
-open.violations <- read.csv("openviolations.csv")
+open.violations <- read.csv("Data/openviolations.csv")
 syracuse <- get_map(location="Syracuse NY", zoom = 13, color="bw")
 syr.map <- ggmap(syracuse, extent = "device")
 vacancy <- as.factor(open.violations$VacantBuilding)
