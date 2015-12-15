@@ -21,11 +21,7 @@ syr.map <- ggmap(syracuse, extent = "device")
 vacancy <- as.factor(open.violations$VacantBuilding)
 landtype <- as.factor(open.violations$LandUse)
 
-
-
 #Heatmap Functions
-nov.parcel <- read.xlsx("Data/all data by property.csv")
-newyork <- readShapePoly( fn="Data/tl_2015_36_tract", proj4string=CRS("+proj=longlat"))
 onondaga <- subset(newyork, subset=(COUNTYFP== "067" ))
 tract.nums2<- c("000100","001000","001400","001500","001600","001701","001702","001800","001900",
                 "000200","002000","002101","002300","002400","002700","002901",
