@@ -1,8 +1,7 @@
 ##Server App
 
 #load libraries
-library(shiny)
-library(ggmap)
+source(helpers.R)
 
 #Functions before Server Begins: Tab 1 Complaint Closeout
 closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = F )
@@ -189,6 +188,100 @@ shinyServer(function(input, output, sessions) {
     syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=landtype), size=3)
     
     
+  })
+  
+  output$del.plot <- renderPlot({
+    plot( syracuse, col=color.vec.del.ordered,main="Syracuse by Census Tracts",sub="The Proportion of Properties Delinquent on Property Tax" )
+    plot( major.roads, col=gray(0.5,0.75), lwd=1, add=T )
+    
+    map.scale( metric=F, ratio=F, relwidth = 0.15, cex=.75 )
+    quant.del <- quantile(prop.del,c(.10,.20,.30,.40,.50,.60,.70,.80,.90,1))
+    
+    legend.text=c(round(quant.del[1],digits=3),round(quant.del[2],digits=3),round(quant.del[3],digits=3)
+                  ,round(quant.del[4],digits=3),round(quant.del[5],digits=3),round(quant.del[6],digits=3)
+                  ,round(quant.del[7],digits=3),round(quant.del[8],digits=3),round(quant.del[9],digits=3)
+                  ,round(quant.del[10],digits=3))
+    
+    legend( "bottomright", bg="white",
+            pch=15, pt.cex=3, cex=.7,
+            legend=legend.text, 
+            col=col.ramp, 
+            box.col="white",
+            title="Proportion of Delinquent Properties",
+            bty="o",
+            box.lwd=1,
+            xjust=1)
+  })
+  
+  ## HEAT MAP FOR SEIZABLE PROPERTIES 
+  output$seizable.plot <- renderPlot({
+    plot( syracuse, col=color.vec.seizable.ordered,main="Syracuse by Census Tracts",sub="The Proportion of Seizable Properties" )
+    plot( major.roads, col=gray(0.5,0.75), lwd=1, add=T )
+    
+    map.scale( metric=F, ratio=F, relwidth = 0.15, cex=.75 )
+    quant.seiz <- quantile(prop.seizable,c(.10,.20,.30,.40,.50,.60,.70,.80,.90,1))
+    
+    legend.text=c(round(quant.seiz[1],digits=3),round(quant.seiz[2],digits=3),round(quant.seiz[3],digits=3)
+                  ,round(quant.seiz[4],digits=3),round(quant.seiz[5],digits=3),round(quant.seiz[6],digits=3)
+                  ,round(quant.seiz[7],digits=3),round(quant.seiz[8],digits=3),round(quant.seiz[9],digits=3)
+                  ,round(quant.seiz[10],digits=3))
+    
+    legend( "bottomright", bg="white",
+            pch=15, pt.cex=3, cex=.7,
+            legend=legend.text, 
+            col=col.ramp, 
+            box.col="white",
+            title="Proportion of Seizable Properties",
+            bty="o",
+            box.lwd=1,
+            xjust=1)
+  })
+  
+  ## HEAT MAP FOR SURA PROPERTIES 
+  output$sura.plot <- renderPlot({
+    plot( syracuse, col=color.vec.sura.ordered,main="Syracuse by Census Tracts",sub="The Proportion of SURA Properties" )
+    plot( major.roads, col=gray(0.5,0.75), lwd=1, add=T )
+    
+    map.scale( metric=F, ratio=F, relwidth = 0.15, cex=.75 )
+    quant.sura <- quantile(prop.sura,c(.10,.20,.30,.40,.50,.60,.70,.80,.90,1))
+    
+    legend.text=c(round(quant.sura[1],digits=3),round(quant.sura[2],digits=3),round(quant.sura[3],digits=3)
+                  ,round(quant.sura[4],digits=3),round(quant.sura[5],digits=3),round(quant.sura[6],digits=3)
+                  ,round(quant.sura[7],digits=3),round(quant.sura[8],digits=3),round(quant.sura[9],digits=3)
+                  ,round(quant.sura[10],digits=3))
+    
+    legend( "bottomright", bg="white",
+            pch=15, pt.cex=3, cex=.7,
+            legend=legend.text, 
+            col=col.ramp, 
+            box.col="white",
+            title="Proportion of SURA Properties",
+            bty="o",
+            box.lwd=1,
+            xjust=1)
+  })
+  ## HEAT MAP FOR VACANT PROPERTIES
+  output$vacant.plot <- renderPlot({
+    plot( syracuse, col=color.vec.vacant.ordered,main="Syracuse by Census Tracts",sub="The Proportion of Vacant Properties" )
+    plot( major.roads, col=gray(0.5,0.75), lwd=1, add=T )
+    
+    map.scale( metric=F, ratio=F, relwidth = 0.15, cex=.75 )
+    quant.vacant <- quantile(prop.vacant,c(.10,.20,.30,.40,.50,.60,.70,.80,.90,1))
+    
+    legend.text=c(round(quant.vacant[1],digits=3),round(quant.vacant[2],digits=3),round(quant.vacant[3],digits=3)
+                  ,round(quant.vacant[4],digits=3),round(quant.vacant[5],digits=3),round(quant.vacant[6],digits=3)
+                  ,round(quant.vacant[7],digits=3),round(quant.vacant[8],digits=3),round(quant.vacant[9],digits=3)
+                  ,round(quant.vacant[10],digits=3))
+    
+    legend( "bottomright", bg="white",
+            pch=15, pt.cex=3, cex=.7,
+            legend=legend.text, 
+            col=col.ramp, 
+            box.col="white",
+            title="Proportion of Vacant Properties",
+            bty="o",
+            box.lwd=1,
+            xjust=1)
   })
   
 })
