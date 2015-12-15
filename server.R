@@ -1,6 +1,19 @@
 ##Server App
 
 #load libraries
+library(shiny)
+library(ggmap)
+library(maps)
+library(maptools)
+
+#Functions before Server Begins: Tab 1 Complaint Closeout
+closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = F )
+averageDays <- read.csv("Data/AverageDays.csv", stringsAsFactors = F)
+averageDays2 <- read.csv("Data/AverageDays2.csv", stringsAsFactors = F)
+
+#Functions before Server Begins: Tab 2 Violation Frequency
+dat <- read.csv( "Data/Violation-Report.csv", stringsAsFactors=F )
+
 source(helpers.R)
 
 #Begin Server
