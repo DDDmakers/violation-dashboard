@@ -174,7 +174,7 @@ shinyServer(function(input, output, sessions) {
   #Map for All Open Violations
   output$map1 <- renderPlot({
     
-    syr.map + geom_point(data=open.violations, aes(x=open.violation$lon, y=open.violations$lat), size=3, col="chocolate1", alpha=.4)
+    syr.map + geom_point(data=open.violations, aes(x=open.violations$lon, y=open.violations$lat), size=3, col="chocolate1", alpha=.4)
     
     })
   #Map for Open Violations by Vacancy 
