@@ -5,9 +5,9 @@ library(shiny)
 library(ggmap)
 
 #Functions before Server Begins: Tab 1 Complaint Closeout
-closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = FALSE )
 averageDays <- read.csv("Data/AverageDays.csv", stringsAsFactors = F)
 averageDays2 <- read.csv("Data/AverageDays2.csv", stringsAsFactors = F)
+closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = FALSE )
 
 #Functions before Server Begins: Tab 2 Violation Frequency
 dat <- read.csv( "Data/Violation-Report.csv", stringsAsFactors=F )
