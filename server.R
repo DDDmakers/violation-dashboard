@@ -7,7 +7,7 @@ library(maps)
 library(maptools)
 
 #Functions before Server Begins: Tab 1 Complaint Closeout
-closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = F )
+closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = FALSE )
 averageDays <- read.csv("Data/AverageDays.csv", stringsAsFactors = F)
 averageDays2 <- read.csv("Data/AverageDays2.csv", stringsAsFactors = F)
 
