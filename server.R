@@ -16,6 +16,8 @@ dat <- read.csv( "Data/Violation-Report.csv", stringsAsFactors=F )
 
 #Functions before Server Begins: Tab 3 and 4 maps
 open.violations <- read.csv("Data/openviolations.csv")
+nov.parcel <- read.xlsx("Data/all data by property.csv")
+newyork <- readShapePoly( fn="Data/tl_2015_36_tract", proj4string=CRS("+proj=longlat"))
 
 source(helpers.R)
 
