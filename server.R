@@ -165,7 +165,7 @@ shinyServer(function(input, output, sessions) {
     pretty.names <- format( as.Date(names(complaint.sub)), "%b-%Y" )
     month.labels <- format( as.Date(names(complaint.sub)), "%b" )
     
-    plot( complaint.sub, type="b", pch=19, xaxt="n", bty="n" , main= input$violation, col="dodgerblue4", lwd=2)
+    plot( complaint.sub, type="o", pch=19, xaxt="n", bty="n" , main= input$violation, col="dodgerblue4", lwd=2)
     axis( side=1, at=(1:length(complaint.sub))[c(T,F,F)], labels=pretty.names[c(T,F,F)], cex.axis=0.5, las=2 )
     text( 1:length(complaint.sub), complaint.sub, month.labels, pos=3, cex=0.5 )
   })
@@ -174,19 +174,19 @@ shinyServer(function(input, output, sessions) {
   #Map for All Open Violations
   output$map1 <- renderPlot({
     
-    syr.map + geom_point(data=open.violations, aes(x=open.violations$lon, y=open.violations$lat), size=3, col="chocolate1", alpha=.4)
+    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat), size=3, col="chocolate1", alpha=.4)
     
     })
   #Map for Open Violations by Vacancy 
   output$map2 <- renderPlot({
       
-    syr.map + geom_point(data=open.violations, aes(x=open.violations$lon, y=open.violations$lat, col=vacancy), size=3)
+    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=vacancy), size=3)
     
     })
    #Map for Open Violations by Land Use Type
    output$map3 <- renderPlot({
       
-     syr.map + geom_point(data=open.violations, aes(x=open.violations$lon, y=open.violations$lat, col=landtype), size=3)
+     syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=landtype), size=3)
     
     
   })
