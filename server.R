@@ -24,7 +24,7 @@ total.complaints[ is.na(total.complaints) ] <- 0
 dat$month.year <- month.year
 
 #Functions before Server Begins: Tab 2 Violation Locations
-open.violations <- read.csv("Data/AverageDays.csv")
+open.violations <- read.csv("Data/openviolations.csv")
 syracuse <- get_map(location="Syracuse NY", zoom = 13, color="bw")
 syr.map <- ggmap(syracuse, extent = "device")
 vacancy <- as.factor(open.violations$VacantBuilding)
