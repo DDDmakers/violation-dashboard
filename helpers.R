@@ -1,18 +1,8 @@
 ##Violation Dashboard Helpers File
 
 #Load Libraries
-library(shiny)
-library(ggmap)
-library(maps)
-library(maptools)
 
-#Functions before Server Begins: Tab 1 Complaint Closeout
-closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = F )
-averageDays <- read.csv("Data/AverageDays.csv", stringsAsFactors = F)
-averageDays2 <- read.csv("Data/AverageDays2.csv", stringsAsFactors = F)
-
-#Functions before Server Begins: Tab 2 Violation Frequency
-dat <- read.csv( "Data/Violation-Report.csv", stringsAsFactors=F )
+#tab2
 violation.date <- as.Date( dat$Violation.Date, "%m/%d/%Y" )
 gt.2012 <- violation.date > "2011-12-31"
 dat <- dat[ gt.2012 , ]
