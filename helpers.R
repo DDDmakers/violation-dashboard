@@ -6,19 +6,13 @@ library(ggmap)
 library(maps)
 library(maptools)
 
-#functions for maps
-open.violations <- read.csv("openviolations.csv")
-syracuse <- get_map(location="Syracuse NY", zoom = 13, color="bw")
-syr.map <- ggmap(syracuse, extent = "device")
-vacancy <- as.factor(open.violations$VacantBuilding)
+#Functions before Server Begins: Tab 1 Complaint Closeout
+closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = F )
+averageDays <- read.csv("Data/AverageDays.csv", stringsAsFactors = F)
+averageDays2 <- read.csv("Data/AverageDays2.csv", stringsAsFactors = F)
 
-#functions for closeout
-closedViolations <- read.csv("ComplaintsDays.csv", stringsAsFactors = FALSE )
-averageDays <- read.csv("AverageDays.csv", stringsAsFactors = F)
-averageDays2 <- read.csv("AverageDays2.csv", stringsAsFactors = F)
-
-#functions before Server begins for Frequency
-dat <- read.csv( "Violation-Report.csv", stringsAsFactors=F )
+#Functions before Server Begins: Tab 2 Violation Frequency
+dat <- read.csv( "Data/Violation-Report.csv", stringsAsFactors=F )
 violation.date <- as.Date( dat$Violation.Date, "%m/%d/%Y" )
 gt.2012 <- violation.date > "2011-12-31"
 dat <- dat[ gt.2012 , ]
@@ -30,6 +24,14 @@ month.year.name <- format( violation.date, "%b-%Y" )
 total.complaints <- tapply( dat$Complaint.Type, month.year, length )
 total.complaints[ is.na(total.complaints) ] <- 0
 dat$month.year <- month.year
+
+#Functions before Server Begins: Tab 2 Violation Locations
+open.violations <- read.csv("Data/openviolations.csv")
+syracuse <- get_map(location="Syracuse NY", zoom = 13, color="bw")
+syr.map <- ggmap(syracuse, extent = "device")
+vacancy <- as.factor(open.violations$VacantBuilding)
+landtype <- as.factor(open.violations$LandUse)
+
 
 
 #Heatmap Functions
