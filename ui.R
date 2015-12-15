@@ -53,16 +53,6 @@ shinyUI(navbarPage("Violation Dashboard",
                             
                             )
                           )
-                        ),
-tabpanel("Heat Maps",
-         titlepanel("Syracuse by Census Tract"),
-         mainPanel(
-           tabsetPanel(
-             tabPanel("Proportion of Vacant Properties",plotOutput("vacant.plot")),
-             tabPanel("Proportion of Properties Delinquent on Property Tax", plotOutput("del.plot")),
-             tabPanel("The Proportion of Seizable Properties", plotOutput("seizable.plot")),
-             tabPanel("The Proportion of SURA Properties", plotOutput("sura.plot"))
-           )
-         ))
+                        )
 
 ))
