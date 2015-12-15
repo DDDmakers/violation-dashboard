@@ -184,9 +184,9 @@ shinyServer(function(input, output, sessions) {
     
     })
    #Map for Open Violations by Land Use Type
-   output$map3 <- renderPlot({
+  output$map3 <- renderPlot({
       
-     syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=landtype), size=3)
+    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=landtype), size=3)
     
     
   })
