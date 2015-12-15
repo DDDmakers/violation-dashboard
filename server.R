@@ -5,9 +5,9 @@ library(shiny)
 library(ggmap)
 
 #Functions before Server Begins: Tab 1 Complaint Closeout
-closedViolations <- read.csv("ComplaintsDays.csv", stringsAsFactors = F )
-averageDays <- read.csv("AverageDays.csv", stringsAsFactors = F)
-averageDays2 <- read.csv("AverageDays2.csv", stringsAsFactors = F)
+closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = F )
+averageDays <- read.csv("Data/AverageDays.csv", stringsAsFactors = F)
+averageDays2 <- read.csv("Data/AverageDays2.csv", stringsAsFactors = F)
 
 #Functions before Server Begins: Tab 2 Violation Frequency
 dat <- read.csv( "Violation-Report.csv", stringsAsFactors=F )
@@ -24,7 +24,7 @@ total.complaints[ is.na(total.complaints) ] <- 0
 dat$month.year <- month.year
 
 #Functions before Server Begins: Tab 2 Violation Locations
-open.violations <- read.csv("openviolations.csv")
+open.violations <- read.csv("Data/AverageDays.csv")
 syracuse <- get_map(location="Syracuse NY", zoom = 13, color="bw")
 syr.map <- ggmap(syracuse, extent = "device")
 vacancy <- as.factor(open.violations$VacantBuilding)
