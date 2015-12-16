@@ -55,11 +55,12 @@ shinyServer(function(input, output, sessions) {
   output$stats <- renderPrint({
     summary(closedViolations[,input$complaint])
   })
-  
+  #Summary Statistics of All Complaints for First Tab
   output$stats2 <- renderPrint({
     summary(closedViolations$AllComplaints)
   })
   
+  #Summary Statistics for Chosen Complaint First Tab
   output$averagesPlot <- renderPlot({
     plot(averageDays2$Average_Days, averageDays2$Total_Number_Complaints,
          xlab = "Average Days",
@@ -155,6 +156,7 @@ shinyServer(function(input, output, sessions) {
            col = "antiquewhite3",
            lty=3)
   })
+ 
   ##Plot for Violation Frequency Tab
   output$complaintFreq <- renderPlot({
     
