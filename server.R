@@ -14,7 +14,7 @@ vacancy <- as.factor(open.violations$VacantBuilding)
 landtype <- as.factor(open.violations$LandUse)
 
 #functions for closeout
-closedViolations <- read.csv("Data/ComplaintsDays.csv")
+closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = F)
 averageDays <- read.csv("Data/AverageDays.csv", stringsAsFactors = F)
 averageDays2 <- read.csv("Data/AverageDays2.csv", stringsAsFactors = F)
 
