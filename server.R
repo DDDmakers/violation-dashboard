@@ -34,7 +34,7 @@ dat$month.year <- month.year
 
 shinyServer(function(input, output, sessions) {
 
-  #plots for Violation Closeout Section  
+  #Plot 1 for Violation Closeout Tab  
   output$complaintPlot <- renderPlot({
     hist(closedViolations[,input$complaint],
          na.rm = F,
@@ -51,7 +51,7 @@ shinyServer(function(input, output, sessions) {
          at=seq(from=0, to=1000, by=50), 
          pos=0)
   })
-  
+    #Plot 2 for Violation Closeout Tab  
   output$stats <- renderPrint({
     summary(closedViolations[,input$complaint])
   })
@@ -155,7 +155,7 @@ shinyServer(function(input, output, sessions) {
            col = "antiquewhite3",
            lty=3)
   })
-  ##Plot for Violation Frequency UI Tab
+  ##Plot for Violation Frequency Tab
   output$complaintFreq <- renderPlot({
     
     dat.sub <- dat[ dat$Complaint.Type == input$violation, ]
@@ -164,12 +164,12 @@ shinyServer(function(input, output, sessions) {
     pretty.names <- format( as.Date(names(complaint.sub)), "%b-%Y" )
     month.labels <- format( as.Date(names(complaint.sub)), "%b" )
     
-    plot( complaint.sub, type="o", pch=19, xaxt="n", bty="n" , main= input$violation, col="red", lwd=2)
+    plot( complaint.sub, type="o", pch=19, xaxt="n", bty="n" , main= input$violation, col="dodgerblue1", lwd=2)
     axis( side=1, at=(1:length(complaint.sub))[c(T,F,F)], labels=pretty.names[c(T,F,F)], cex.axis=0.5, las=2 )
     text( 1:length(complaint.sub), complaint.sub, month.labels, pos=3, cex=0.7 )
   })
   
-  ##Plots for Maps UI Tab
+  ##Plots for Maps Tab
   output$map1 <- renderPlot({
     
     syr.map + geom_point(data=open.violations, aes(x=lon, y=lat), size=3, col="chocolate1", alpha=.4)
@@ -178,13 +178,13 @@ shinyServer(function(input, output, sessions) {
     
   output$map2 <- renderPlot({
       
-    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=vacancy), size=3)
+    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=vacancy), size=2)
     
     })
     
    output$map3 <- renderPlot({
       
-    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=landtype), size=3)
+    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=landtype), size=2)
     
   })
   
