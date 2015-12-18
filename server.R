@@ -182,7 +182,7 @@ shinyServer(function(input, output, sessions) {
   output$map2 <- renderPlot({
       
 
-    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=as.factor(open.violations$VacantBuilding), size=2)
+    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=as.factor(open.violations$VacantBuilding)), size=2)
     
     })
     
