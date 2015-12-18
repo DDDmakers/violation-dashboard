@@ -7,6 +7,9 @@ shinyUI(navbarPage("Violation Dashboard",
                               sidebarPanel(
                                 selectInput(inputId="complaint",
                                             label= "Type of Complaint - Histogram",
+                                            ##Had to manual enter the choices. The code choices = colnames(closedViolations)
+                                            ##resulted in an error in which R could not find the object closedViolations
+                                            ##even though it is created in the server.R script
                                             choices = c("BedBugs",	"BlockedExits",	"BlueBinRequest",
                                             "BuildingPermit",	"BulkHouseholdItems",	"CertofUseBar",
                                             "CertofUseFoodStore",	"CertofUseRestaurant",	"CleanUpRqstPublicProp",	
@@ -23,6 +26,7 @@ shinyUI(navbarPage("Violation Dashboard",
                                             "WaterShopAllComplaints",	"YardWaste",	"ZoningViolations",	"AllComplaints")),
                                 selectInput(inputId = "complaint2",
                                             label= "Type of Complaint - Table",
+                                            ##See note about previous inputId
                                             choices= c("BedBugs",	"BlockedExits",	"BlueBinRequest",
                                             "BuildingPermit",	"BulkHouseholdItems",	"CertofUseBar",
                                             "CertofUseFoodStore",	"CertofUseRestaurant",	"CleanUpRqstPublicProp",	
