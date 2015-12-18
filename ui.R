@@ -7,7 +7,7 @@ shinyUI(navbarPage("Violation Dashboard",
                               sidebarPanel(
                                 selectInput(inputId="complaint",
                                             label= "Type of Complaint - Histogram",
-                                            choices = colnames(closedViolations)),
+                                            choices = c("BedBugs", "BlockedExits")),
                                 selectInput(inputId = "complaint2",
                                             label= "Type of Complaint - Table",
                                             choices= colnames(averageDays)),
