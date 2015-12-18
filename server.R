@@ -10,8 +10,7 @@ library(ggmap)
 open.violations <- read.csv("Data/openviolations.csv")
 syracuse <- get_map(location="Syracuse NY", zoom = 13, color="bw")
 syr.map <- ggmap(syracuse, extent = "device")
-vacancy <- as.factor(open.violations$VacantBuilding)
-landtype <- as.factor(open.violations$LandUse)
+
 
 #functions for closeout
 closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = F)
@@ -182,12 +181,14 @@ shinyServer(function(input, output, sessions) {
     
   output$map2 <- renderPlot({
       
+    vacancy <- as.factor(open.violations$VacantBuilding)
+
     syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=vacancy), size=2)
     
     })
     
    output$map3 <- renderPlot({
-      
+    landtype <- as.factor(open.violations$LandUse)
     syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=landtype), size=2)
     
   })
