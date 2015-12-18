@@ -1,23 +1,15 @@
 ##Server App
 
-#set location
-
 #load libraries
 library(shiny)
 library(ggmap)
 
-#functions for maps
-open.violations <- read.csv("Data/openviolations.csv")
-syracuse <- get_map(location="Syracuse NY", zoom = 13, color="bw")
-syr.map <- ggmap(syracuse, extent = "device")
-
-
-#functions for closeout
+#Functions before Server begins: Tab 1 - Closeout Length
 closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = F)
 averageDays <- read.csv("Data/AverageDays.csv", stringsAsFactors = F)
 averageDays2 <- read.csv("Data/AverageDays2.csv", stringsAsFactors = F)
 
-#functions before Server begins for Frequency
+#Functions before Server begins: Tab 2 - Frequencies
 dat <- read.csv( "Data/Violation-Report.csv", stringsAsFactors=F )
 violation.date <- as.Date( dat$Violation.Date, "%m/%d/%Y" )
 gt.2012 <- violation.date > "2011-12-31"
@@ -31,6 +23,12 @@ total.complaints <- tapply( dat$Complaint.Type, month.year, length )
 total.complaints[ is.na(total.complaints) ] <- 0
 dat$month.year <- month.year
 
+#Functions before Server begins: Tab 3 - Map
+open.violations <- read.csv("Data/openviolations.csv")
+syracuse <- get_map(location="Syracuse NY", zoom = 13, color="bw")
+syr.map <- ggmap(syracuse, extent = "device")
+
+##Begin Shiny Script
 shinyServer(function(input, output, sessions) {
 
   #Plot 1 for Violation Closeout Tab  
@@ -49,10 +47,11 @@ shinyServer(function(input, output, sessions) {
          at=seq(from=0, to=1000, by=50), 
          pos=0)
   })
-    #Plot 2 for Violation Closeout Tab  
+  #Plot 2 for Violation Closeout Tab  
   output$stats <- renderPrint({
     summary(closedViolations[,input$complaint])
   })
+  
   #Summary Statistics of All Complaints for First Tab
   output$stats2 <- renderPrint({
     summary(closedViolations$AllComplaints)
