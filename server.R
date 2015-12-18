@@ -36,7 +36,6 @@ shinyServer(function(input, output, sessions) {
   #Plot 1 for Violation Closeout Tab  
   output$complaintPlot <- renderPlot({
     hist(closedViolations[,input$complaint],
-         na.rm = F,
          breaks = 10,
          prob = TRUE,
          main = c("# of Days Taken to Close a ", input$complaint, "Complaint"),
@@ -69,7 +68,6 @@ shinyServer(function(input, output, sessions) {
          main="Total Number of Complaints Alongside Average Number of Days to Close a Complaint",
          pch=19,
          col=averageDays2$Col,
-         alpha=0.4,
          cex=2,
          ylim = c(-5000,16000),
          xlim = c(0,500),
@@ -182,13 +180,12 @@ shinyServer(function(input, output, sessions) {
   output$map2 <- renderPlot({
       
 
-    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=as.factor(open.violations$VacantBuilding)), size=2)
+    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=open.violations$VacantBuilding), size=2)
     
     })
     
    output$map3 <- renderPlot({
-    landtype <- as.factor(open.violations$LandUse)
-    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=landtype), size=2)
+    syr.map + geom_point(data=open.violations, aes(x=lon, y=lat, col=open.violations$LandUse), size=2)
     
   })
   
