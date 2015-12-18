@@ -36,6 +36,9 @@ shinyServer(function(input, output, sessions) {
 
   #Plot 1 for Violation Closeout Tab  
   output$complaintPlot <- renderPlot({
+  closedViolations <- read.csv("Data/ComplaintsDays.csv", stringsAsFactors = F)
+averageDays <- read.csv("Data/AverageDays.csv", stringsAsFactors = F)
+averageDays2 <- read.csv("Data/AverageDays2.csv", stringsAsFactors = F)
     hist(closedViolations[,input$complaint],
          na.rm = F,
          breaks = 10,
@@ -62,6 +65,8 @@ shinyServer(function(input, output, sessions) {
   
   #Summary Statistics for Chosen Complaint First Tab
   output$averagesPlot <- renderPlot({
+    
+    
     plot(averageDays2$Average_Days, averageDays2$Total_Number_Complaints,
          xlab = "Average Days",
          ylab = "Total Number of Complaints",
