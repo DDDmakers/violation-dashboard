@@ -10,7 +10,7 @@ shinyUI(navbarPage("Violation Dashboard",
                                             choices = c("BedBugs", "BlockedExits")),
                                 selectInput(inputId = "complaint2",
                                             label= "Type of Complaint - Table",
-                                            choices= colnames(averageDays)),
+                                            choices= c("BedBugs", "BlockedExits")),
                                 hr(),
                                 helpText("Data from City of Syracuse, Division of Code Enforcement")),
                            
