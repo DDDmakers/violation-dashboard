@@ -72,16 +72,8 @@ shinyUI(navbarPage("Violation Dashboard",
                    
                    tabPanel("Violation Location",
                             titlePanel("Open Violation Locations"),
-                            mainPanel(
-                              tabsetPanel(
-                                tabPanel("All", plotOutput("map1")), 
-                                tabPanel("Vacancy Status", plotOutput("map2")), 
-                                tabPanel("Land Use", plotOutput("map3"))
-
+                            mainPanel("All Properties with Open Violations", plotOutput("map1"))
                             
                             )
-                          )
-                        )
-                   
-                   
+
 ))
