@@ -164,7 +164,7 @@ shinyServer(function(input, output, sessions) {
     pretty.names <- format( as.Date(names(complaint.sub)), "%b-%Y" )
     month.labels <- format( as.Date(names(complaint.sub)), "%b" )
     
-    plot( complaint.sub, type="o", pch=19, xaxt="n", bty="n" , main= input$violation, col="dodgerblue1", lwd=2)
+    plot( complaint.sub, type="o", pch=19, xaxt="n", bty="n", ylab="Count of Complaint", xlab="Month of Complaint", main= input$violation, col="dodgerblue1", lwd=2)
     axis( side=1, at=(1:length(complaint.sub))[c(T,F,F)], labels=pretty.names[c(T,F,F)], cex.axis=0.5, las=2 )
     text( 1:length(complaint.sub), complaint.sub, month.labels, pos=3, cex=0.7 )
   })
